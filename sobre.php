@@ -49,7 +49,6 @@
 				<br>
 				<span class="version"><br><code>1.3pre3</code>(13/09/16):</span>
 				<p>+Agora o CamargoMatch conta com um <a href="https://github.com/rillis/CamargoMatch" target="_blank">GitHub</a>.</p>
-				<p>> Menu lateral semi-funcional.</p>
 				<span class="version"><br><code>1.3pre2</code>(05/09/16):</span>
 				<p>+Lançada a versão BETA da página de perfil mobile. Por enquanto conta apenas com:</p>
 				<p>> Visualização do proprio perfil.</p>
