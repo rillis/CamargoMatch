@@ -37,7 +37,7 @@
 	</style>
 	<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">	 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/animate.css">
 	</head>
 	<body>
@@ -47,6 +47,8 @@
 				<br><br>
 				Change log:
 				<br>
+				<span class="version"><br><code>1.3pre4</code>(18/09/16):</span>
+				<p>+Quando tenta ver um perfil sem estar logado, volta para tela de login e logo após logar retorna para o perfil solicitado.</p>
 				<span class="version"><br><code>1.3pre3</code>(13/09/16):</span>
 				<p>+Agora o CamargoMatch conta com um <a href="https://github.com/rillis/CamargoMatch" target="_blank">GitHub</a>.</p>
 				<span class="version"><br><code>1.3pre2</code>(05/09/16):</span>
@@ -98,4 +100,4 @@
 	<script>
 		new WOW().init();
 	</script>
-</html>	
+</html>

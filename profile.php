@@ -92,7 +92,8 @@ display:inline-block;
 		<div class="c">
 			<?php
 				if(!isset($_COOKIE['id'])){
-				window.location.href="login.php?backto='profile.php?id=<?php echo $_GET['id']; ?>''";
+				$idBack = $_GET['id'];
+				?><script>window.location.href="login.php?backto=<?php echo $idBack; ?>";</script><?php
 				}
 				mysql_query("UPDATE tbusuario SET ativo=DATE_SUB(NOW(), INTERVAL 3 HOUR) WHERE id=".$_COOKIE['id']) or print(mysql_error());
 				if($_GET['id']==$_COOKIE['id']){

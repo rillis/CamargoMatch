@@ -1,5 +1,5 @@
-<?php 
-include 'config.php'; 
+<?php
+include 'config.php';
 if(!isset($_COOKIE['notify'])){
 	setcookie("notify",999);
 }
@@ -53,7 +53,7 @@ if(!isset($_COOKIE['notify'])){
 	</style>
 	<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">	 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/animate.css">
 	</head>
 	<body>
@@ -66,7 +66,7 @@ if(!isset($_COOKIE['notify'])){
 						<p style="font-family: Raleway;">Usuario: <input type="text" name="user" style="font-family: Raleway;"/></p>
 						<p style="font-family: Raleway;">Senha: <input type="password" name="pass" /></p>
 						<p><button class="btn" style="background:none;border-color:#000;color:#000;font-family: Raleway;" type="submit" name="ok">Enviar</button></p>
-                                                
+
 												<?php
 												if($require_email){
 												?>
@@ -85,7 +85,7 @@ if(!isset($_COOKIE['notify'])){
 						$senha = sha1($_POST['pass']);
 							$verifica = mysql_query("SELECT * FROM tbusuario WHERE username = '$user' AND senha = '$senha'") or die("<br><div class='alert alert-danger'>Erro ao selecionar</div>");
 							if (mysql_num_rows($verifica)<=0){
-							die("<br><div class='alert alert-danger'>Usuário e/ou senha incorretos.</div>");
+							die("<br><div class='alert alert-danger'>Usuï¿½rio e/ou senha incorretos.</div>");
 							}else{
 							while($sql = mysql_fetch_array($verifica)){
 							$id = $sql["id"];
@@ -115,13 +115,18 @@ if(!isset($_COOKIE['notify'])){
 							}
 							if($require_email){
 								if($verified==1){
-								header('Location: profile.php?id='.$id);
+								if(isset($_GET['backto'])){
+									$idBack = $_GET['backto'];
+									header('Location: profile.php?id='.$idBack);
 								}else{
-								function rmcookie($name) 
-								{ 
-								unset($_COOKIE[$name]); 
-								return setcookie($name, NULL, -1); 
-								} 
+									header('Location: profile.php?id='.$id);
+								}
+								}else{
+								function rmcookie($name)
+								{
+								unset($_COOKIE[$name]);
+								return setcookie($name, NULL, -1);
+								}
 
 								rmcookie("id");
 								rmcookie("nome");
@@ -138,9 +143,16 @@ if(!isset($_COOKIE['notify'])){
 								}
 								die("<br><div class='alert alert-danger'>Verifique sua conta de email! (Verifique tambem a pasta de Spam e Lixo)</div>");
 								}
-							}else{header('Location: profile.php?id='.$id);}
+							}else{
+								if(isset($_GET['backto'])){
+									$idBack = $_GET['backto'];
+									header('Location: profile.php?id='.$idBack);
+								}else{
+									header('Location: profile.php?id='.$id);
+								}
 							}
-					}					
+							}
+					}
 					?>
 				</center>
 			</div>
@@ -164,4 +176,4 @@ if(!isset($_COOKIE['notify'])){
 	<script>
 		new WOW().init();
 	</script>
-</html>			
+</html>
