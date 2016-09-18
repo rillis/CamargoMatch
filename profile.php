@@ -29,7 +29,7 @@ include 'config.php';
 	padding:1%;
 	overflow:auto;
 	}
-	.foto{	
+	.foto{
 	display:inline;
 	}
 	.sobre{
@@ -84,7 +84,7 @@ display:inline-block;
 	var type=1;
 	</script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">	 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/animate.css">
 	<link rel="stylesheet" href="css/magnific-popup.css">
 	</head>
@@ -92,16 +92,15 @@ display:inline-block;
 		<div class="c">
 			<?php
 				if(!isset($_COOKIE['id'])){
-				print "<br><div class='alert alert-danger'>Logue-se para continuar</div>";
-				die();
+				window.location.href="login.php?backto='profile.php?id=<?php echo $_GET['id']; ?>''";
 				}
 				mysql_query("UPDATE tbusuario SET ativo=DATE_SUB(NOW(), INTERVAL 3 HOUR) WHERE id=".$_COOKIE['id']) or print(mysql_error());
 				if($_GET['id']==$_COOKIE['id']){
 				//se o id do get for o id do cookie
 				echo "<script>type=2;</script>";
 				?>
-				
-				
+
+
 				<nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -142,8 +141,8 @@ display:inline-block;
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-	
-				
+
+
 				<div class="wow fadeInDown">
 				<div class="sobre" id="sobre">
 				<div class="foto">
@@ -152,8 +151,8 @@ display:inline-block;
 				<button class="btn btn-info btn-sm" style="display:absolute;" aria-label="Left Align"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
 				</a>
 				</div>
-				
-				
+
+
 				<span class="nome"><?php echo $_COOKIE['nome']; ?></span>
 				<div class="info" id="info">
 				Sexo:<br>
@@ -189,9 +188,9 @@ display:inline-block;
 					if($linhaIDA!=$idGET){
 						$ID = $linhaIDA;
 					}else{
-						$ID = $linhaIDB;	
+						$ID = $linhaIDB;
 					}
-					
+
 				$query = "SELECT * FROM tbusuario WHERE id=".$ID;
 
 				$dados2 = mysql_query($query) or die(mysql_error());
@@ -199,7 +198,7 @@ display:inline-block;
 				$linha2 = mysql_fetch_assoc($dados2);
 
 				$total2 = mysql_num_rows($dados2);
-				
+
 				if($total2 > 0) {
 				do{
 					$idUser = $linha2['id'];
@@ -208,20 +207,20 @@ display:inline-block;
 						<a href="profile.php?id=<?php echo $idUser; ?>"><img src="img/<?php echo $usernameA; ?>/pp.png" style="display:inline;max-height:42px;margin-top:1px;margin-right:3px;"></img></a>
 					<?php
 				}while($linha2 = mysql_fetch_assoc($dados2));
-				
+
 				}
 				}while($linha = mysql_fetch_assoc($dados));
 
 				}else{
 				}
 
-				
+
 				?>
 				</div>
 				</div>
-				
+
 				<form enctype="multipart/form-data" action="" method="POST" style="background-color:#fff;border-radius:10px; margin-top:1%; padding:0.5%" class="wow fadeInRight">
-				
+
 				<textarea rows="4" class="text" name="conteudo" placeholder="Poste algo na sua linha do tempo"></textarea><br><br>
 				<button class="btn" type="submit" style="background:none;border-color:#000;color:#000;font-family: Raleway;" name="ok">Enviar</button>
 				Foto (Opcional): <input type="file" name="foto2" style="font-family: Raleway; display:inline;" accept="image/*"/><br>
@@ -263,7 +262,7 @@ display:inline-block;
 						echo '<script> window.location.href = "profile.php?id='.$_COOKIE['id'].'";</script>';
 						}
 					}
-				
+
 				?>
 				<p><h3 style="margin-top:4%;">Sua linha do tempo:</h3></p>
 				<style>
@@ -275,7 +274,7 @@ display:inline-block;
 					right: 20px;
 				}
 				</style>
-				
+
 				<?php
 				$query = sprintf("SELECT * FROM tbpost WHERE nome='".$_COOKIE['username']."' ORDER BY id DESC");
 
@@ -296,7 +295,7 @@ display:inline-block;
 				if($conteudo=="n"){
 					?>
 					<div class="post">
-                        <a class="delete" href="hug.php?cm=<?php echo $id; ?>&u=<?php echo sha1($_COOKIE['username']); ?>"><img src="del.ico" height="15"></img></a>                                                             
+                        <a class="delete" href="hug.php?cm=<?php echo $id; ?>&u=<?php echo sha1($_COOKIE['username']); ?>"><img src="del.ico" height="15"></img></a>
 						<img src="<?php echo "img/".$nome."/pp.png"; ?>" style="max-width:52px"/> <?php echo $nomeC; ?> publicou:<br><br>
 						<a href="<?php echo $localFoto; ?>" class="popup"><img src="<?php echo $localFoto; ?>" style="max-width:300px"/></a>
 					</div>
@@ -304,7 +303,7 @@ display:inline-block;
 				}else if($f=="n"){
 					?>
 					<div class="post">
-					<a class="delete" href="hug.php?cm=<?php echo $id; ?>&u=<?php echo sha1($_COOKIE['username']); ?>"><img src="del.ico" height="15"></img></a> 
+					<a class="delete" href="hug.php?cm=<?php echo $id; ?>&u=<?php echo sha1($_COOKIE['username']); ?>"><img src="del.ico" height="15"></img></a>
 					<img src="<?php echo "img/".$nome."/pp.png"; ?>" style="max-width:52px"/> <?php echo $nomeC; ?> publicou:<br><br>
 						<h5><?php echo $conteudo; ?></h5>
 					</div>
@@ -312,7 +311,7 @@ display:inline-block;
 				}else{
 					?>
 					<div class="post">
-					<a class="delete" href="hug.php?cm=<?php echo $id; ?>&u=<?php echo sha1($_COOKIE['username']); ?>"><img src="del.ico" height="15"></img></a> 
+					<a class="delete" href="hug.php?cm=<?php echo $id; ?>&u=<?php echo sha1($_COOKIE['username']); ?>"><img src="del.ico" height="15"></img></a>
 					<img src="<?php echo "img/".$nome."/pp.png"; ?>" style="max-width:52px"/> <?php echo $nomeC; ?> publicou:<br><br>
 						<a href="<?php echo $localFoto; ?>" class="popup"><img src="<?php echo $localFoto; ?>" style="max-width:300px"/></a><br>
 						<h5><?php echo $conteudo; ?></h5>
@@ -320,9 +319,9 @@ display:inline-block;
 					<?php
 				}
 				?>
-				
-				
-				
+
+
+
 				<?php
 				}while($linha = mysql_fetch_assoc($dados));
 
@@ -331,8 +330,8 @@ display:inline-block;
 				}
 
 				?>
-				
-				
+
+
 				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- Teste2 -->
 <ins class="adsbygoogle"
@@ -343,13 +342,13 @@ display:inline-block;
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-				
-				
+
+
 				<?php
 				}else{
-				//se estiver visualizando o profile de alguem (SELECT)		
-				echo "<script>type=3;</script>";				
-				?>	
+				//se estiver visualizando o profile de alguem (SELECT)
+				echo "<script>type=3;</script>";
+				?>
 									<nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -392,8 +391,8 @@ display:inline-block;
 </nav>
 		<?php
 			$idPessoa = $_GET['id'];
-			
-			
+
+
 			$verifica = mysql_query("SELECT * FROM tbusuario WHERE id = '$idPessoa'") or die("<br><div class='alert alert-danger'>Erro ao selecionar</div>");
 							if (mysql_num_rows($verifica)<=0){
 							die("<br><div class='alert alert-danger'>Usuário incorreto.</div>");
@@ -416,7 +415,7 @@ display:inline-block;
 				<div class="foto">
 				<A href="<?php echo 'img/'.$usernamePessoa."/pp.png"; ?>" class="popup"><img src="<?php echo 'img/'.$usernamePessoa."/pp.png"; ?>" width="128px" /></a>
 				</div>
-				
+
 
 				<span class="nome"><?php echo $nomePessoa; ?></span>
 
@@ -451,7 +450,7 @@ display:inline-block;
 				//	<span>Friends!</span>
 				?>
 				</div>
-				
+
 				</div>
 <div class="" style="height:50px; background-color:#fff; border-radius:10px;margin-top:1px">
 				<span style="line-height:50px; vertical-align:middle;margin-left:10px;margin-right:10px;">Amigos:</span>
@@ -472,9 +471,9 @@ display:inline-block;
 					if($linhaIDA!=$idGET){
 						$ID = $linhaIDA;
 					}else{
-						$ID = $linhaIDB;	
+						$ID = $linhaIDB;
 					}
-					
+
 				$query = "SELECT * FROM tbusuario WHERE id=".$ID;
 
 				$dados2 = mysql_query($query) or die(mysql_error());
@@ -482,7 +481,7 @@ display:inline-block;
 				$linha2 = mysql_fetch_assoc($dados2);
 
 				$total2 = mysql_num_rows($dados2);
-				
+
 				if($total2 > 0) {
 				do{
 					$idUser = $linha2['id'];
@@ -491,7 +490,7 @@ display:inline-block;
 						<a href="profile.php?id=<?php echo $idUser; ?>"><img src="img/<?php echo $usernameA; ?>/pp.png" style="display:inline;max-height:42px;margin-top:1px;margin-right:3px;"></img></a>
 					<?php
 				}while($linha2 = mysql_fetch_assoc($dados2));
-				
+
 				}
 				}while($linha = mysql_fetch_assoc($dados));
 
@@ -499,10 +498,10 @@ display:inline-block;
 
 				}
 
-				
+
 				?>
 								<div style="float:right;margin-top:8px;margin-right:8px;">
-								
+
 								<?php
 								$query = "SELECT DATE_FORMAT(ativo,'%d/%m/%Y %H:%i:%s') FROM tbusuario WHERE id=".$idGET;
 
@@ -520,21 +519,21 @@ display:inline-block;
 				do{
 					$dataSQL = $linha["DATE_FORMAT(ativo,'%d/%m/%Y %H:%i:%s')"];
 					$agora = $linha2['data'];
-					
+
 					$dia = substr($agora, 0, 2);
 					$mes = substr($agora, 3, 2);
 					$ano = substr($agora, 6, 4);
 					$hora = substr($agora, 11, 2);
 					$minuto = substr($agora, 14, 2);
 					$segundo = substr($agora, 17, 2);
-					
+
 					$diaSQL = substr($dataSQL, 0, 2);
 					$mesSQL = substr($dataSQL, 3, 2);
 					$anoSQL = substr($dataSQL, 6, 4);
 					$horaSQL = substr($dataSQL, 11, 2);
 					$minutoSQL = substr($dataSQL, 14, 2);
 					$segundoSQL = substr($dataSQL, 17, 2);
-					
+
 					$minutosAusente=abs(intval($minuto)-intval($minutoSQL));
 					$horasAusente=abs(intval($hora)-intval($horaSQL));
 					$diasAusente=abs(intval($dia)-intval($diaSQL));
@@ -588,10 +587,10 @@ display:inline-block;
 				<a href="chat.php?id=<?php echo $_GET['id']; ?>"><button class="btn btn-primary" style=""><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Conversar</button></a>
 				</div>
 				</div>
-				</div>				
-					
+				</div>
+
 					<p><h3 style="margin-top:4%;">Linha do tempo:</h3></p>
-				
+
 				<?php
 				$query = sprintf("SELECT * FROM tbpost WHERE nome='".$usernamePessoa."' ORDER BY id DESC");
 
@@ -634,9 +633,9 @@ display:inline-block;
 					<?php
 				}
 				?>
-				
-				
-				
+
+
+
 				<?php
 				}while($linha = mysql_fetch_assoc($dados));
 
@@ -645,8 +644,8 @@ display:inline-block;
 				}
 
 				?>
-					
-					
+
+
 					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- Teste2 -->
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -658,13 +657,13 @@ display:inline-block;
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-					
-					
-					
-					
+
+
+
+
 <?php
 	}
-			?>		
+			?>
 		</div>
 			<audio id="notify">
   <source src="notify.mp3" type="audio/mp3">
@@ -681,7 +680,7 @@ $(document).ready(function() {
 	/**
 	 * FUNÇÃO ATUALIZA QUE BUCA A PÁGINA AÇÃO PARA IMPRIMIR NA ID NOTIFICAÇÃO
 	 */
-	 
+
 function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
