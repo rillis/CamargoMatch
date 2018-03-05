@@ -97,7 +97,7 @@ display:inline-block;
 				}
 				mysql_query("UPDATE tbusuario SET ativo=DATE_SUB(NOW(), INTERVAL 3 HOUR) WHERE id=".$_COOKIE['id']) or print(mysql_error());
 				if($_GET['id']==$_COOKIE['id']){
-				//se o id do get for o id do cookie
+				//se o id do get for o id do cookied
 				echo "<script>type=2;</script>";
 				?>
 
